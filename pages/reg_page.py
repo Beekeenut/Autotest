@@ -12,6 +12,7 @@ class RegistrPage(BasePage):
     #REG_ERROR_MESSAGE = ("xpath", "//*[@id='notification' and contains(@class, 'error')]")
     REG_SUCCESS_INDICATOR = ("xpath", "//*[@id='notification' and contains(@class, 'success')]")
 
+    # TODO добавить описания методов и входные/выходные параметры
     def enter_reg_username(self, username):
         self.input_text(self.REG_USERNAME_INPUT, username)
 
@@ -33,6 +34,4 @@ class RegistrPage(BasePage):
             )
             return True
         except TimeoutException:
-            return False
-        except Exception:
             return False
