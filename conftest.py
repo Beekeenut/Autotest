@@ -4,15 +4,6 @@ from pages.reg_page import RegistrPage
 from selenium import webdriver
 from config.settings import BASE_URL #, LOGIN_PATH
 
-
-
-
-
-
-
-
-
-
 @pytest.fixture(scope="session")
 def driver():
     options = webdriver.ChromeOptions()

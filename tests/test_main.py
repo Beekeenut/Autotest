@@ -1,4 +1,3 @@
-import pytest
 from config.settings import USERNAME, PASSWORD, CAPTCHA
 
 
@@ -30,6 +29,7 @@ class TestLogin:
         assert error_msg is not None, "Сообщение об ошибке не отображено"
         assert "Ошибка авторизации" in error_msg, "Некорректное сообщение об ошибке"
 
+    # TODO тесты должны быть независимы друг от друга, тест успешной авторизации не должен ждать успешной регистрации с другого теста. Регистрацию надо проводить в предусловии теста
     def test_valid_login(self, login_page):
         """Тест успешной авторизации с корректными данными"""
         login_page.enter_username(USERNAME)
