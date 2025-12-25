@@ -42,5 +42,4 @@ class LoginPage(BasePage):
         except TimeoutException:
             return False
         #TODO не понял этого except а, думаю гпт сгенерил - разобраться и поправить
-        except Exception:
-            return False
+        #- Сам не понял, убрал
