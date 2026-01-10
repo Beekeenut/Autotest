@@ -1,19 +1,21 @@
 import random
 
-def generate_word(length):                      #Вынес функцию из конфига
+#TODO на будущее, обычно таких функций хелперов очень много и они нужны для разных модулей. Их выносят в отдельные папки с разной функциональностью, все держать в файле с тестами очень плохая практика.
+# Тут можно, так как вспомогательный метод всего один
+def generate_word(length):
     word = ""
     for _ in range(length):
         char_code = random.randint(97, 122)
         word += chr(char_code)
     return word
-
-class TestVar:                                  #ТД также вынес из конфига
+#TODO не нужно делать отдельный класс, вставить в класс с тестами
+class TestVar:
         USERNAME = (generate_word(5))
         PASSWORD = (generate_word(5))
         CAPTCHA = "1234"
 
 class TestLogin:
-
+   # прям сюда
 
     def test_valid_registration(self, reg_page, login_page):
         """Тест успешной регистрацией"""
@@ -41,7 +43,6 @@ class TestLogin:
         assert error_msg is not None, "Сообщение об ошибке не отображено"
         assert "Ошибка авторизации" in error_msg, "Некорректное сообщение об ошибке"
 
-    #TODO тесты должны быть независимы друг от друга, тест успешной авторизации не должен ждать успешной регистрации с другого теста. Регистрацию надо проводить в предусловии теста
     def test_valid_login(self, login_page, reg_page, credentials):
         """Тест успешной авторизации с корректными данными"""
         USERNAME = credentials["username"]   # Добавил фикстуру, чтобы генерились новые ТД, а не брались старые. С фикстурами еще надо разбираться, не до конца понимаю

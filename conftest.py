@@ -26,7 +26,7 @@ def reg_page(driver):
     return RegistrPage(driver)
 
 
-
+#фикстуры это по сути объекты которые будут доступны в тестах, то есть чтобы нам кучу раз не писать одно и тоже проще вынести в одну фикстуру, а потом в тесте написать имя этого объекта и он его найдет
 @pytest.fixture
 def credentials():
     username = ''.join(random.choices(string.ascii_lowercase, k=8))
