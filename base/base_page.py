@@ -5,29 +5,30 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 10)
-    #TODO добавить описания методов и входные/выходные параметры
+    #TODO поправил описание, пишем просто что делает метод, не пишем что служит поиском в других методах, а если другие методы уберут?
     def find_element(self, locator):
         """
-        Метод нужен для поиска элемента в методах click и input по заданному локатору(тип пути локатора, путь)
-        :param locator: входной параметр,
-        :return: возвращает найденный в DOM элемент (выходной параметр)
+        Поиск элемента по локатору
+        :param locator: локатор
+        :return: возвращает найденный в DOM элемент
         """
         return self.wait.until(EC.presence_of_element_located(locator))
 
     def click_element(self, locator):
         """
-        Метод нужен для клика по найденному элементу
-        :param locator: входной параметр - для поиска по локатору,
-        :return: возвращает none?  (выходной параметр)
+        Клик по элементу
+        :param locator: локатор
+        :return:
         """
         element = self.find_element(locator)
         element.click()
 
     def input_text(self, locator, text):
         """
-        Метод нужен для вставки текста
-        :param locator: входной параметр - для поиска по локатору, text: - текст, который будет вставлен в поле методом send_keys
-        :return: возвращает none?  (выходной параметр)
+        Вставка текста
+        :param locator: локатор
+               text: - текст для вставки
+        :return:
         """
         element = self.find_element(locator)
         element.clear()

@@ -12,7 +12,6 @@ class RegistrPage(BasePage):
     #REG_ERROR_MESSAGE = ("xpath", "//*[@id='notification' and contains(@class, 'error')]")
     REG_SUCCESS_INDICATOR = ("xpath", "//*[@id='notification' and contains(@class, 'success')]")
 
-    # TODO добавить описания методов и входные/выходные параметры
     def enter_reg_username(self, username):
         """
         Метод нужен для вставки имени пользователя в поле username при регистрации
