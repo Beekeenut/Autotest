@@ -8,27 +8,28 @@ def generate_word(length):
         char_code = random.randint(97, 122)
         word += chr(char_code)
     return word
+#По сути этот метод тоже можно в фикстуры вынести или еще какая-то отдельная папка должна быть?
+
 #TODO не нужно делать отдельный класс, вставить в класс с тестами
-class TestVar:
-        USERNAME = (generate_word(5))
-        PASSWORD = (generate_word(5))
-        CAPTCHA = "1234"
+
 
 class TestLogin:
    # прям сюда
-
+    USERNAME = (generate_word(5))
+    PASSWORD = (generate_word(5))
+    CAPTCHA = "1234"
     def test_valid_registration(self, reg_page, login_page):
         """Тест успешной регистрацией"""
         login_page.click_registration()
-        reg_page.enter_reg_username(TestVar.USERNAME)
-        reg_page.enter_reg_password(TestVar.PASSWORD)
-        reg_page.enter_captcha(TestVar.CAPTCHA)
+        reg_page.enter_reg_username(self.USERNAME)
+        reg_page.enter_reg_password(self.PASSWORD)
+        reg_page.enter_captcha(self.CAPTCHA)
         reg_page.click_create()
         assert reg_page.is_reg_succes(), "Регистрация не выполнена"
     
     def test_invalid_password(self, login_page):
         """Тест с неверным паролем"""
-        login_page.enter_username(TestVar.USERNAME)
+        login_page.enter_username(self.USERNAME)
         login_page.enter_password("wrong_password")
         login_page.click_login()
         error_msg = login_page.get_error_message()
@@ -37,7 +38,7 @@ class TestLogin:
 
     def test_empty_username(self, login_page):
         """Тест с пустым именем пользователя"""
-        login_page.enter_password(TestVar.PASSWORD)
+        login_page.enter_password(self.PASSWORD)
         login_page.click_login()
         error_msg = login_page.get_error_message()
         assert error_msg is not None, "Сообщение об ошибке не отображено"
@@ -51,7 +52,7 @@ class TestLogin:
         login_page.click_registration()
         reg_page.enter_reg_username(USERNAME)
         reg_page.enter_reg_password(PASSWORD)
-        reg_page.enter_captcha(TestVar.CAPTCHA)
+        reg_page.enter_captcha(self.CAPTCHA)
         reg_page.click_create()
         login_page.enter_username(USERNAME)
         login_page.enter_password(PASSWORD)

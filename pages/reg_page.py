@@ -14,34 +14,34 @@ class RegistrPage(BasePage):
 
     def enter_reg_username(self, username):
         """
-        Метод нужен для вставки имени пользователя в поле username при регистрации
-        :param username: входной параметр, сгенерированное имя,
-        :return: none
+        Вставка имени пользователя в поле username при регистрации
+        :param username: сгенерированное имя
+        :return:
         """
         self.input_text(self.REG_USERNAME_INPUT, username)
 
 
     def enter_reg_password(self, password):
         """
-        Метод нужен для вставки пароля в поле password при регистрации
-        :param password: входной параметр, сгенерированный пароль,
-        :return: none
+        Вставка пароля в поле password при регистрации
+        :param password: сгенерированный пароль
+        :return:
         """
         self.input_text(self.REG_PASSWORD_INPUT, password)
 
     def enter_captcha(self, captcha):
         """
-        Метод нужен для вставки капчи в поле captcha при регистрации
-        :param captcha: входной параметр, указанная капча,
-        :return: none
+        Вставка капчи в поле captcha при регистрации
+        :param captcha: указанная капча
+        :return:
         """
         self.input_text(self.CAPTCHA_INPUT, captcha)
 
     def click_create(self):
         """
-        Метод нужен для клика по кнопке "создать" при регистрации
-        :param: отсутствуют,
-        :return: none
+        Клик по кнопке "создать" при регистрации
+        :param:
+        :return:
         """
         self.click_element(self.CREATE_BUTTON)
 
@@ -49,9 +49,9 @@ class RegistrPage(BasePage):
 
     def is_reg_succes(self, timeout=5):
         """
-        Метод нужен для проверки успешно ли прошла регистрация, смотрит по всплывающему уведомлению
-        :param timeout=5: входной параметр, время, которое метод ожидает уведомление,
-        :return: значение True, если отработало корректно или False, при если вышло время ожидания и уведомление не отобразилось
+        Проверка успешной регистрации по всплывающему уведомлению
+        :param timeout=5: время ожидания уведомления
+        :return: True, если корректно / False, если вышло время ожидания и нет уведомления
         """
         try:
             WebDriverWait(self.driver, timeout).until(
